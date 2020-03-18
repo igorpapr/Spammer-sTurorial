@@ -1,5 +1,7 @@
 # Spammer-sTurorial
-A simple client-server app where user can CRUD email addresses and send a message to all of them in one click. Read README to get the email sender function work.
+A simple client-server app where user can CRUD email addresses and send a message to all of them in one click.
+Addresses are stored in MongoDB.
+Read README to get the email sender function work.
 
 #IMPORTANT!!!!!!!!!!!!!!!!!!!!!!
 In order to get the sender function work properly - enable "Less secure app access" in the account settings before using this function.
