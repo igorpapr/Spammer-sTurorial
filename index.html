@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spammer's guide</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel='stylesheet' type="text/css" href="styles.css">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="index.js"></script>
+</head>
+<body onload="loadData();">
+    <div class="display-4 text-center">
+        Spam recipients
+    </div>
+    <table id='mails' class="table table-hover">
+
+    </table>
+    <hr>
+    <div class="container">
+        <form name="addForm" class="form-group">
+            <input type="text" id="email" name="email" class="col-2" placeholder="Enter email">
+            <input type="text" id="fname" name="fname" class="col-2" placeholder="First name">
+            <input type="text" id="sname" name="sname" class="col-2" placeholder="Surname">
+            <input type="text" id="patr" name="patr" class="col-2" placeholder="Patronymic">
+            <button type="submit" class="btn btn-primary col-1 mybutton" id="add-button">Add</button>
+        </form>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <form action="/send" method="post" class="form-group" name="mailForm">
+                    <label for="subject">Subject:</label>
+                    <input type="text" id="subject" name="subject" class="form-control" placeholder="Enter the subject here" required>
+                    <label for="message" class="form-labels">Message:</label>
+                    <textarea id="message" name="message" class="form-control" placeholder="Enter your message here" rows="5" required></textarea>
+                    <button id="sendbutton" type="submit" class="btn btn-primary" style="margin-top: 1em;">Submit</button>
+                </form>
+            </div>
+            <div class="col-sm-4">
+                <h5 class="lead">You can also use some of these template phrases:</h5>
+                <ul onclick="addTemplate(event)" class="list-unstyled text-info" style="cursor: pointer;">
+                    <li>I'm looking forward to hearing from you again.</li>
+                    <li>Thank you a lot!</li>
+                    <li>Best regards,</li>
+                    <li>Yours sincerely,</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit target</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" class="form-group" name="editForm">
+                        <label for="emailedit">Email:</label>
+                        <input type="text" id="emailedit" name="emailedit" class="form-control" required>
+                        <label for="fnameedit" class="form-labels">Name:</label>
+                        <input id="fnameedit" name="fnameedit" class="form-control" required>
+                        <label for="snameedit" class="form-labels">Surname:</label>
+                        <input id="snameedit" name="snameedit" class="form-control" required>
+                        <label for="patredit" class="form-labels">Patronymic:</label>
+                        <input id="patredit" name="patredit" class="form-control" required>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" id="save" class="btn btn-info">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
